@@ -1,5 +1,5 @@
-adapter: 
-host: 
-database: 
-username: 
-password: 
+adapter: sqlserver 
+host: localhost
+database: master
+username: fake
+password: fake
