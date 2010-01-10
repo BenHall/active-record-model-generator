@@ -25,7 +25,11 @@ def write_model_file(name)
 end
 
 def create_model(name)
+  return if reject name
   make_model_directory
   write_model_file name unless model_exists?(name)
 end
 
+def reject(name)
+  name == 'sysdiagram'
+end
