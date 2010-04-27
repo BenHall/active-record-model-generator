@@ -27,7 +27,12 @@ end
 def create_model(name)
   return if reject name
   make_model_directory
-  write_model_file name unless model_exists?(name)
+  cleaned_name = clean name
+  write_model_file cleaned_name
+end
+
+def clean(name)
+   name.gsub(/ /, "_")
 end
 
 def reject(name)
