@@ -17,18 +17,20 @@ def model_exists?(name)
   File.exists? File.join(@models_directory,name)
 end
 
-def write_model_file(name)
+def write_model_file(name, table_name)
   File.open("#{File.join(@models_directory,name)}.rb", 'w') do |f| 
     f.puts("class #{name} < ActiveRecord::Base")
+    f.puts("  set_table_name '#{table_name}'")
     f.puts("end")
   end
 end
 
-def create_model(name)
+def create_model(name, table_name=name)
   return if reject name
   make_model_directory
+  
   cleaned_name = clean name
-  write_model_file cleaned_name
+  write_model_file cleaned_name, table_name
 end
 
 def clean(name)

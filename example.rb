@@ -8,5 +8,5 @@ require 'yaml'
 db_config = YAML::load(File.open('database.yml'))
 connect(db_config)
           
-tables.singularize {|t| create_model t}
+tables.each {|t| create_model t.singularize, t}
 Dir.require_all @models_directory
